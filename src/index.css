@@ -1,0 +1,55 @@
+/* src/index.css */
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* These three @tailwind directives inject Tailwind's base reset,             */
+/* component classes, and utility classes into our CSS bundle.                */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+@layer base {
+  /* Smooth scrolling for the whole page */
+  html { scroll-behavior: smooth; }
+
+  /* Custom scrollbar to match dark theme */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0f1117; }
+  ::-webkit-scrollbar-thumb { background: #252a3a; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #4f6ef7; }
+}
+
+@layer components {
+  /* Reusable button styles as Tailwind components */
+  .btn-primary {
+    @apply bg-brand-500 hover:bg-brand-600 text-white font-medium px-5 py-2.5
+           rounded-xl transition-all duration-200 active:scale-95 
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply border border-surface-border hover:border-brand-500 text-white
+           font-medium px-5 py-2.5 rounded-xl transition-all duration-200
+           hover:bg-brand-500/10 active:scale-95;
+  }
+
+  /* Card component */
+  .card {
+    @apply bg-surface-card border border-surface-border rounded-2xl p-6
+           transition-all duration-200;
+  }
+
+  /* Input component */
+  .input {
+    @apply w-full bg-surface border border-surface-border text-white
+           placeholder-gray-500 rounded-xl px-4 py-3 text-sm
+           focus:outline-none focus:border-brand-500 focus:ring-1
+           focus:ring-brand-500 transition-colors duration-200;
+  }
+
+  /* Badge / tag component */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+}
