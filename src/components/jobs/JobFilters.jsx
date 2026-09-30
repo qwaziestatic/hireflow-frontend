@@ -28,7 +28,7 @@ export default function JobFilters({ filters, setFilters, onClear }) {
     filters.type || filters.category || filters.experience || filters.location;
 
   return (
-    <div className="card space-y-6 sticky top-24">
+    <div className="card space-y-6 sticky top-24 shadow-lg shadow-black/10">
       {/* Header */}
       <div className="flex items-center justify-between">
         <h3 className="font-display font-semibold flex items-center gap-2">
@@ -53,7 +53,10 @@ export default function JobFilters({ filters, setFilters, onClear }) {
         <input
           type="text"
           className="input text-sm"
-          placeholder="City, country, or Remote"
+          aria-label="Filter by location"
+          name="location"
+          autoComplete="off"
+          placeholder="City, country, or remote…"
           value={filters.location}
           onChange={(e) => setFilters((p) => ({ ...p, location: e.target.value, page: 1 }))}
         />
@@ -69,7 +72,8 @@ export default function JobFilters({ filters, setFilters, onClear }) {
             <button
               key={type}
               onClick={() => handleChange("type", type)}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm capitalize transition-all ${
+              aria-pressed={filters.type === type}
+              className={`w-full text-left px-3 py-2 rounded-lg text-sm capitalize transition-colors ${
                 filters.type === type
                   ? "bg-brand-500/20 text-brand-500 border border-brand-500/30"
                   : "text-gray-400 hover:bg-surface-border/50 hover:text-white"
@@ -91,7 +95,8 @@ export default function JobFilters({ filters, setFilters, onClear }) {
             <button
               key={cat}
               onClick={() => handleChange("category", cat)}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
+              aria-pressed={filters.category === cat}
+              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                 filters.category === cat
                   ? "bg-brand-500/20 text-brand-500 border border-brand-500/30"
                   : "text-gray-400 hover:bg-surface-border/50 hover:text-white"
@@ -113,7 +118,8 @@ export default function JobFilters({ filters, setFilters, onClear }) {
             <button
               key={exp}
               onClick={() => handleChange("experience", exp)}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
+              aria-pressed={filters.experience === exp}
+              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                 filters.experience === exp
                   ? "bg-brand-500/20 text-brand-500 border border-brand-500/30"
                   : "text-gray-400 hover:bg-surface-border/50 hover:text-white"

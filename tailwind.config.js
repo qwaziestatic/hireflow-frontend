@@ -9,22 +9,21 @@ export default {
       // Custom color palette for the job portal brand
       colors: {
         brand: {
-          50:  "#f0f4ff",
-          100: "#e0eaff",
-          500: "#4f6ef7",
-          600: "#3b5bf0",
-          700: "#2d48d6",
-          900: "#1a2b8a",
+          50:  "#edf4ff",
+          100: "#dbeafe",
+          500: "#5b7cfa",
+          600: "#4968e8",
+          700: "#3d56c9",
+          900: "#202d67",
         },
         surface: {
-          DEFAULT: "#0f1117",   // Dark background
-          card:    "#181c27",   // Card background
-          border:  "#252a3a",   // Border color
+          DEFAULT: "#0b1220",   // Deep navy page background
+          card:    "#121d30",   // Elevated panel background
+          border:  "#233552",   // Cool blue-gray border
         },
       },
       fontFamily: {
-        // Custom fonts loaded in index.html
-        display: ["'Syne'", "sans-serif"],
+        display: ["'Manrope'", "sans-serif"],
         body:    ["'DM Sans'", "sans-serif"],
       },
       animation: {

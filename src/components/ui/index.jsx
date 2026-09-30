@@ -12,6 +12,8 @@ export function Spinner({ size = "md" }) {
   const sizes = { sm: "w-4 h-4", md: "w-8 h-8", lg: "w-12 h-12" };
   return (
     <div
+      role="status"
+      aria-label="Loading"
       className={`${sizes[size]} border-2 border-brand-500 border-t-transparent rounded-full animate-spin`}
     />
   );
@@ -32,7 +34,7 @@ export function PageLoader() {
 export function EmptyState({ title = "Nothing found", description, action }) {
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center">
-      <div className="w-16 h-16 rounded-2xl bg-surface-border flex items-center justify-center mb-4">
+      <div className="w-16 h-16 rounded-xl bg-surface-border flex items-center justify-center mb-4">
         <SearchX size={28} className="text-gray-600" />
       </div>
       <h3 className="font-display font-semibold text-lg mb-2">{title}</h3>

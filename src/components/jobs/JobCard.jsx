@@ -61,7 +61,7 @@ export default function JobCard({ job, savedIds = [], onSaveToggle }) {
     // The whole card is a Link — clicking anywhere navigates to job detail
     <Link
       to={`/jobs/${job.id}`}
-      className="card hover:border-brand-500/50 hover:shadow-lg hover:shadow-brand-500/5 group block animate-fade-in"
+      className="card hover:-translate-y-0.5 hover:border-brand-500/60 hover:shadow-xl hover:shadow-black/20 group block animate-fade-in"
     >
       {/* ── Top Row: Company Logo + Save Button ── */}
       <div className="flex items-start justify-between mb-4">
@@ -71,7 +71,9 @@ export default function JobCard({ job, savedIds = [], onSaveToggle }) {
             <img
               src={job.company_logo}
               alt={job.company_name}
-              className="w-12 h-12 rounded-xl object-cover bg-surface-border"
+              width="48"
+              height="48"
+              className="w-12 h-12 rounded-lg object-cover bg-surface-border"
             />
           ) : (
             <div className="w-12 h-12 rounded-xl bg-brand-500/20 flex items-center justify-center text-brand-500 font-display font-bold text-lg">
@@ -91,7 +93,8 @@ export default function JobCard({ job, savedIds = [], onSaveToggle }) {
           <button
             onClick={handleSave}
             disabled={savingLoading}
-            className="text-gray-600 hover:text-brand-500 transition-colors p-1 rounded-lg hover:bg-brand-500/10"
+            aria-label={isSaved ? "Remove saved job" : "Save job"}
+            className="text-gray-600 hover:text-brand-500 transition-colors p-2 -m-1 rounded-lg hover:bg-brand-500/10"
             title={isSaved ? "Remove from saved" : "Save job"}
           >
             {isSaved

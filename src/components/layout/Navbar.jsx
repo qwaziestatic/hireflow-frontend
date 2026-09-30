@@ -26,20 +26,20 @@ export default function Navbar() {
       : "text-gray-400 hover:text-white text-sm transition-colors";
 
   return (
-    <nav className="sticky top-0 z-50 bg-surface-card/80 backdrop-blur-md border-b border-surface-border">
+    <nav className="sticky top-0 z-50 bg-[#0b1220]/85 backdrop-blur-xl border-b border-surface-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-[4.5rem]">
 
           {/* ── Logo ── */}
-          <Link to="/" className="flex items-center gap-2 font-display font-bold text-xl">
-            <div className="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center">
+          <Link to="/" className="flex items-center gap-2.5 font-display font-bold text-xl tracking-tight">
+            <div className="w-9 h-9 bg-brand-500 rounded-lg flex items-center justify-center shadow-lg shadow-brand-500/20">
               <Briefcase size={16} className="text-white" />
             </div>
             <span>HireFlow</span>
           </Link>
 
           {/* ── Desktop Navigation Links ── */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-7">
             <NavLink to="/jobs" className={linkClass}>Find Jobs</NavLink>
             <NavLink to="/companies" className={linkClass}>Companies</NavLink>
             {user?.role === "employer" && (
@@ -60,7 +60,8 @@ export default function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center gap-2 hover:bg-surface-border/50 rounded-xl px-3 py-2 transition-colors"
+                  aria-label="Open account menu"
+                  className="flex items-center gap-2 hover:bg-surface-border/50 rounded-lg px-3 py-2 transition-colors"
                 >
                   {/* Avatar: show image if available, otherwise initial */}
                   {user.avatar ? (
@@ -118,6 +119,7 @@ export default function Navbar() {
           {/* ── Mobile Hamburger ── */}
           <button
             className="md:hidden text-gray-400 hover:text-white"
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}

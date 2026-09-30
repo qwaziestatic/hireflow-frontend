@@ -23,8 +23,8 @@ export default function Footer() {
             </p>
             <div className="flex gap-3 mt-4">
               {/* Social icons */}
-              {[Github, Twitter, Linkedin].map((Icon, i) => (
-                <a key={i} href="#" className="w-8 h-8 rounded-lg bg-surface-border flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-500 transition-all">
+              {[["GitHub", Github], ["Twitter", Twitter], ["LinkedIn", Linkedin]].map(([label, Icon]) => (
+                <a key={label} href="#" aria-label={label} className="w-8 h-8 rounded-lg bg-surface-border flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-500 transition-colors">
                   <Icon size={14} />
                 </a>
               ))}

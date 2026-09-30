@@ -50,7 +50,7 @@ function JobseekerDashboard({ user }) {
           { label: "Shortlisted", value: applicationsData?.filter(a => a.status === "shortlisted").length || 0, icon: TrendingUp, color: "text-purple-400" },
           { label: "Hired", value: applicationsData?.filter(a => a.status === "hired").length || 0, icon: Briefcase, color: "text-green-400" },
         ].map(({ label, value, icon: Icon, color }) => (
-          <div key={label} className="card text-center">
+          <div key={label} className="card text-center hover:border-surface-border/80">
             <Icon size={20} className={`${color} mx-auto mb-2`} />
             <p className="font-display font-bold text-2xl">{value}</p>
             <p className="text-gray-500 text-xs">{label}</p>
@@ -59,12 +59,13 @@ function JobseekerDashboard({ user }) {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-surface-card border border-surface-border rounded-xl p-1 mb-6 w-fit">
+      <div className="flex gap-1 bg-surface-card border border-surface-border rounded-lg p-1 mb-6 w-fit">
         {tabs.map(({ id, label, icon: Icon, count }) => (
           <button
             key={id}
             onClick={() => setActiveTab(id)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+            aria-selected={activeTab === id}
+            className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
               activeTab === id
                 ? "bg-brand-500 text-white"
                 : "text-gray-400 hover:text-white"
@@ -112,7 +113,7 @@ function JobseekerDashboard({ user }) {
                   <span className="text-gray-600 text-xs hidden sm:block">
                     {formatDistanceToNow(new Date(app.applied_at), { addSuffix: true })}
                   </span>
-                  <Link to={`/jobs/${app.job_id}`} className="text-gray-600 hover:text-brand-500">
+                  <Link to={`/jobs/${app.job_id}`} aria-label={`View ${app.job_title}`} className="text-gray-600 hover:text-brand-500">
                     <Eye size={15} />
                   </Link>
                 </div>
@@ -240,8 +241,11 @@ export default function DashboardPage() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="font-display font-bold text-3xl">
-          Welcome back, {user?.name?.split(" ")[0]} 👋
+        <p className="text-brand-500 text-xs font-semibold uppercase tracking-[0.16em] mb-3">
+          {user?.role === "employer" ? "Your hiring workspace" : "Your career workspace"}
+        </p>
+        <h1 className="font-display font-bold text-3xl md:text-4xl tracking-tight text-balance">
+          Welcome back, {user?.name?.split(" ")[0]}
         </h1>
         <p className="text-gray-500 mt-1 capitalize">
           {user?.role} Dashboard

@@ -10,46 +10,80 @@
 
 /* Custom global styles */
 @layer base {
+  :root {
+    color-scheme: dark;
+    font-synthesis: none;
+  }
+
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 10% -10%, rgba(91, 124, 250, 0.16), transparent 32rem),
+      radial-gradient(circle at 90% 0%, rgba(38, 181, 180, 0.08), transparent 28rem),
+      #0b1220;
+    color: #f4f6fb;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: rgba(91, 124, 250, 0.35);
+    color: #fff;
+  }
+
   /* Smooth scrolling for the whole page */
   html { scroll-behavior: smooth; }
 
   /* Custom scrollbar to match dark theme */
   ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #0f1117; }
-  ::-webkit-scrollbar-thumb { background: #252a3a; border-radius: 3px; }
+  ::-webkit-scrollbar-track { background: #0b1220; }
+  ::-webkit-scrollbar-thumb { background: #2a4164; border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: #4f6ef7; }
 }
 
 @layer components {
   /* Reusable button styles as Tailwind components */
   .btn-primary {
-    @apply bg-brand-500 hover:bg-brand-600 text-white font-medium px-5 py-2.5
-           rounded-xl transition-all duration-200 active:scale-95 
+    @apply bg-brand-500 hover:bg-brand-600 text-white font-semibold px-5 py-2.5
+           rounded-lg transition-colors duration-200 active:scale-[.98]
            disabled:opacity-50 disabled:cursor-not-allowed;
+    box-shadow: 0 8px 20px rgba(91, 124, 250, 0.18);
   }
 
   .btn-outline {
-    @apply border border-surface-border hover:border-brand-500 text-white
-           font-medium px-5 py-2.5 rounded-xl transition-all duration-200
-           hover:bg-brand-500/10 active:scale-95;
+    @apply border border-surface-border hover:border-brand-500/70 text-gray-200
+           font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200
+           hover:bg-brand-500/10 active:scale-[.98];
   }
 
   /* Card component */
   .card {
-    @apply bg-surface-card border border-surface-border rounded-2xl p-6
-           transition-all duration-200;
+    @apply bg-surface-card border border-surface-border rounded-xl p-6
+           transition-[border-color,box-shadow,transform] duration-200;
   }
 
   /* Input component */
   .input {
     @apply w-full bg-surface border border-surface-border text-white
-           placeholder-gray-500 rounded-xl px-4 py-3 text-sm
-           focus:outline-none focus:border-brand-500 focus:ring-1
-           focus:ring-brand-500 transition-colors duration-200;
+           placeholder-gray-600 rounded-lg px-4 py-3 text-sm
+           focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20
+           transition-[border-color,box-shadow] duration-200;
   }
 
   /* Badge / tag component */
   .badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-semibold tracking-wide;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

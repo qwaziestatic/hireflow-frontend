@@ -45,47 +45,45 @@ export default function HomePage() {
   };
 
   return (
-    <div>
+    <div className="overflow-hidden">
       {/* ── HERO SECTION ── */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden border-b border-surface-border">
         {/* Decorative background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-brand-900/30 via-transparent to-transparent pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-500/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 pb-20 relative">
           {/* Badge */}
-          <div className="flex justify-center mb-6">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-500 text-sm font-medium">
+          <div className="flex justify-center mb-7">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-500/10 border border-brand-500/20 text-brand-100 text-xs font-semibold tracking-wide uppercase">
               <TrendingUp size={14} />
               1,200+ jobs added this week
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-center leading-tight mb-6">
-            Find Your Next{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-blue-400">
-              Dream Role
-            </span>
+          <h1 className="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl text-center leading-[1.08] tracking-[-0.04em] text-balance mb-6">
+            Work that moves you <span className="text-brand-500">forward.</span>
           </h1>
 
-          <p className="text-gray-400 text-lg text-center max-w-2xl mx-auto mb-10">
-            Browse thousands of job opportunities from top companies. 
-            Apply in minutes, land your next career move.
+          <p className="text-gray-400 text-base md:text-lg text-center max-w-xl mx-auto mb-10 leading-relaxed">
+            Discover thoughtful opportunities from teams building what’s next. Your next chapter starts here.
           </p>
 
           {/* ── Search Bar ── */}
           <form onSubmit={handleSearch} className="max-w-3xl mx-auto">
-            <div className="flex flex-col sm:flex-row gap-2 bg-surface-card border border-surface-border rounded-2xl p-2">
+            <div className="flex flex-col sm:flex-row gap-2 bg-surface-card/90 border border-surface-border rounded-xl p-2 shadow-2xl shadow-black/20">
               {/* Job search input */}
               <div className="flex items-center gap-2 flex-1 px-3">
                 <Search size={18} className="text-gray-500 flex-shrink-0" />
                 <input
                   type="text"
-                  placeholder="Job title, keyword, or company"
+                  aria-label="Search by job title, keyword, or company"
+                  name="search"
+                  placeholder="Job title, keyword, or company…"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full bg-transparent text-white placeholder-gray-600 text-sm focus:outline-none py-2"
+                  className="w-full bg-transparent text-white placeholder-gray-600 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/30 rounded py-2"
                 />
               </div>
 
@@ -97,10 +95,12 @@ export default function HomePage() {
                 <MapPin size={18} className="text-gray-500 flex-shrink-0" />
                 <input
                   type="text"
-                  placeholder="Location or Remote"
+                  aria-label="Search by location or remote"
+                  name="location"
+                  placeholder="Location or remote…"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  className="w-full bg-transparent text-white placeholder-gray-600 text-sm focus:outline-none py-2"
+                  className="w-full bg-transparent text-white placeholder-gray-600 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/30 rounded py-2"
                 />
               </div>
 
@@ -116,7 +116,7 @@ export default function HomePage() {
               <Link
                 key={cat}
                 to={`/jobs?category=${cat}`}
-                className="px-3 py-1.5 rounded-full bg-surface-border/50 text-gray-400 hover:text-white hover:bg-surface-border text-xs transition-all"
+                className="px-3 py-1.5 rounded-md bg-surface-card/60 border border-surface-border text-gray-400 hover:text-white hover:border-brand-500/50 text-xs transition-colors"
               >
                 {cat}
               </Link>
@@ -126,9 +126,9 @@ export default function HomePage() {
       </section>
 
       {/* ── STATS SECTION ── */}
-      <section className="border-y border-surface-border bg-surface-card">
+      <section className="border-y border-surface-border bg-surface-card/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-surface-border">
             <StatCard icon={Briefcase}  value="12,400+" label="Active Jobs" />
             <StatCard icon={Building2}  value="850+"    label="Companies" />
             <StatCard icon={Users}      value="45,000+" label="Job Seekers" />
@@ -138,11 +138,11 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED JOBS ── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="font-display font-bold text-2xl md:text-3xl">Latest Opportunities</h2>
-            <p className="text-gray-500 text-sm mt-1">Freshly posted jobs across all categories</p>
+            <h2 className="font-display font-bold text-2xl md:text-3xl tracking-tight">Latest opportunities</h2>
+              <p className="text-gray-500 text-sm mt-1">Fresh roles from teams worth joining</p>
           </div>
           <Link
             to="/jobs"
@@ -172,7 +172,7 @@ export default function HomePage() {
 
       {/* ── CTA SECTION ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="rounded-3xl bg-gradient-to-r from-brand-900/50 to-brand-700/20 border border-brand-500/20 p-10 md:p-16 text-center">
+        <div className="rounded-2xl bg-brand-500/10 border border-brand-500/20 p-10 md:p-16 text-center">
           <h2 className="font-display font-bold text-3xl md:text-4xl mb-4">
             Hiring top talent?
           </h2>

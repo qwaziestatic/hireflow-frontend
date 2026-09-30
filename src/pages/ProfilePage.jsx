@@ -50,7 +50,8 @@ export default function ProfilePage() {
     <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="font-display font-bold text-3xl mb-1">Your Profile</h1>
+        <p className="text-brand-500 text-xs font-semibold uppercase tracking-[0.16em] mb-3">Account settings</p>
+        <h1 className="font-display font-bold text-3xl md:text-4xl tracking-tight mb-1">Your profile</h1>
         <p className="text-gray-500 text-sm">Keep your information up to date</p>
       </div>
 
@@ -61,7 +62,9 @@ export default function ProfilePage() {
             <img
               src={user.avatar}
               alt={user.name}
-              className="w-20 h-20 rounded-2xl object-cover"
+              width="80"
+              height="80"
+              className="w-20 h-20 rounded-xl object-cover"
             />
           ) : (
             // Fallback: colored circle with first letter of name
@@ -93,6 +96,8 @@ export default function ProfilePage() {
           <input
             type="text"
             className={`input ${errors.name ? "border-red-500" : ""}`}
+            autoComplete="name"
+            name="name"
             placeholder="Your full name"
             {...register("name", {
               required: "Name is required",
@@ -113,7 +118,8 @@ export default function ProfilePage() {
           <textarea
             rows={4}
             className="input resize-none"
-            placeholder="A short bio about yourself..."
+            name="bio"
+            placeholder="A short bio about yourself…"
             {...register("bio", {
               maxLength: { value: 500, message: "Bio cannot exceed 500 characters" },
             })}
@@ -132,6 +138,8 @@ export default function ProfilePage() {
           <input
             type="text"
             className="input"
+            name="location"
+            autoComplete="address-level2"
             placeholder="e.g. Nairobi, Kenya"
             {...register("location")}
           />
@@ -145,6 +153,7 @@ export default function ProfilePage() {
           <input
             type="url"
             className="input"
+            name="resume_url"
             placeholder="https://drive.google.com/your-resume"
             {...register("resume_url")}
           />
@@ -161,6 +170,7 @@ export default function ProfilePage() {
           <input
             type="url"
             className="input"
+            name="avatar"
             placeholder="https://example.com/your-photo.jpg"
             {...register("avatar")}
           />

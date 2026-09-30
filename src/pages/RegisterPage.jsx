@@ -107,6 +107,8 @@ export default function RegisterPage() {
                 type="text"
                 className={`input ${errors.name ? "border-red-500" : ""}`}
                 placeholder="John Doe"
+                autoComplete="name"
+                name="name"
                 {...register("name", {
                   required: "Name is required",
                   minLength: { value: 2, message: "Name too short" },
@@ -121,6 +123,8 @@ export default function RegisterPage() {
                 type="email"
                 className={`input ${errors.email ? "border-red-500" : ""}`}
                 placeholder="you@example.com"
+                autoComplete="email"
+                name="email"
                 {...register("email", {
                   required: "Email is required",
                   pattern: { value: /^\S+@\S+\.\S+$/, message: "Invalid email" },
@@ -136,6 +140,8 @@ export default function RegisterPage() {
                   type={showPassword ? "text" : "password"}
                   className={`input pr-10 ${errors.password ? "border-red-500" : ""}`}
                   placeholder="Min. 6 characters"
+                  autoComplete="new-password"
+                  name="password"
                   {...register("password", {
                     required: "Password is required",
                     minLength: { value: 6, message: "Password must be at least 6 characters" },
@@ -143,6 +149,7 @@ export default function RegisterPage() {
                 />
                 <button
                   type="button"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white"
                   onClick={() => setShowPassword(!showPassword)}
                 >

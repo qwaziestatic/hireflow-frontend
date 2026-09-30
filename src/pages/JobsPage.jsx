@@ -56,7 +56,8 @@ export default function JobsPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* ── Page Header ── */}
       <div className="mb-8">
-        <h1 className="font-display font-bold text-3xl mb-2">Find Your Next Job</h1>
+        <p className="text-brand-500 text-xs font-semibold uppercase tracking-[0.16em] mb-3">Your next move</p>
+        <h1 className="font-display font-bold text-3xl md:text-4xl tracking-tight text-balance mb-2">Find your next job</h1>
         <p className="text-gray-500">
           {data?.pagination?.total
             ? `${data.pagination.total.toLocaleString()} jobs available`
@@ -70,7 +71,10 @@ export default function JobsPage() {
         <input
           type="text"
           className="input pl-11 pr-4 py-3.5 text-sm"
-          placeholder="Search by title, skill, or keyword..."
+          aria-label="Search jobs"
+          name="job-search"
+          autoComplete="off"
+          placeholder="Search by title, skill, or keyword…"
           value={filters.search}
           onChange={(e) => setFilters((p) => ({ ...p, search: e.target.value, page: 1 }))}
         />
@@ -82,6 +86,7 @@ export default function JobsPage() {
           <select
             value={filters.sort}
             onChange={(e) => setFilters((p) => ({ ...p, sort: e.target.value, page: 1 }))}
+            aria-label="Sort jobs"
             className="input w-auto py-2 text-sm cursor-pointer"
           >
             <option value="newest">Newest First</option>
@@ -131,7 +136,7 @@ export default function JobsPage() {
             <div className="absolute right-0 top-0 bottom-0 w-80 bg-surface-card overflow-y-auto p-6">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="font-display font-semibold">Filters</h3>
-                <button onClick={() => setShowMobileFilters(false)}>
+                <button aria-label="Close filters" onClick={() => setShowMobileFilters(false)}>
                   <X size={20} className="text-gray-400" />
                 </button>
               </div>

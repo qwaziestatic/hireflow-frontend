@@ -54,7 +54,9 @@ export default function CompanyDetailPage() {
             <img
               src={company.logo_url}
               alt={company.name}
-              className="w-20 h-20 rounded-2xl object-cover bg-surface-border flex-shrink-0"
+              width="80"
+              height="80"
+              className="w-20 h-20 rounded-xl object-cover bg-surface-border flex-shrink-0"
             />
           ) : (
             <div className="w-20 h-20 rounded-2xl bg-brand-500/20 flex items-center justify-center text-brand-500 font-display font-bold text-3xl flex-shrink-0">
@@ -64,7 +66,7 @@ export default function CompanyDetailPage() {
 
           {/* Details */}
           <div className="flex-1">
-            <h1 className="font-display font-bold text-2xl mb-1">{company.name}</h1>
+            <h1 className="font-display font-bold text-2xl md:text-3xl tracking-tight mb-1">{company.name}</h1>
 
             {/* Meta row */}
             <div className="flex flex-wrap gap-x-5 gap-y-1.5 mb-4">
@@ -139,7 +141,7 @@ export default function CompanyDetailPage() {
               <Link
                 key={job.id}
                 to={`/jobs/${job.id}`}
-                className="card flex items-center justify-between gap-4 hover:border-brand-500/40 group"
+                className="card flex items-center justify-between gap-4 hover:-translate-y-0.5 hover:border-brand-500/50 group transition-[border-color,transform]"
               >
                 <div className="min-w-0">
                   <h3 className="font-semibold text-sm group-hover:text-brand-500 transition-colors truncate mb-1">

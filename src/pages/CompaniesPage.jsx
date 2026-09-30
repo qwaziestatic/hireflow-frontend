@@ -15,7 +15,7 @@ function CompanyCard({ company }) {
   return (
     <Link
       to={`/companies/${company.id}`}
-      className="card hover:border-brand-500/40 group transition-all animate-fade-in"
+      className="card hover:-translate-y-0.5 hover:border-brand-500/60 group transition-[border-color,box-shadow,transform] animate-fade-in"
     >
       {/* Logo + Name */}
       <div className="flex items-center gap-4 mb-4">
@@ -23,7 +23,9 @@ function CompanyCard({ company }) {
           <img
             src={company.logo_url}
             alt={company.name}
-            className="w-14 h-14 rounded-xl object-cover bg-surface-border"
+            width="56"
+            height="56"
+            className="w-14 h-14 rounded-lg object-cover bg-surface-border"
           />
         ) : (
           <div className="w-14 h-14 rounded-xl bg-brand-500/15 flex items-center justify-center text-brand-500 font-display font-bold text-xl">
@@ -88,7 +90,8 @@ export default function CompaniesPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="font-display font-bold text-3xl mb-2">Explore Companies</h1>
+        <p className="text-brand-500 text-xs font-semibold uppercase tracking-[0.16em] mb-3">The teams behind the work</p>
+        <h1 className="font-display font-bold text-3xl md:text-4xl tracking-tight text-balance mb-2">Explore companies</h1>
         <p className="text-gray-500">
           {data?.pagination?.total
             ? `${data.pagination.total} companies hiring right now`
@@ -102,7 +105,10 @@ export default function CompaniesPage() {
         <input
           type="text"
           className="input pl-11"
-          placeholder="Search by company name or industry..."
+          aria-label="Search companies"
+          name="company-search"
+          autoComplete="off"
+          placeholder="Search by company name or industry…"
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
